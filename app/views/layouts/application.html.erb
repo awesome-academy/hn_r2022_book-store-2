@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= t "title" %></title>
+    <%= render "layouts/rails_default" %>
+    <%= render "layouts/shim" %>
+  </head>
+
+  <body>
+    <%= render "layouts/header" %>
+    <%= yield %>
+  </body>
+</html>
