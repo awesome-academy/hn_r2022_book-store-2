@@ -1,0 +1,41 @@
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+  <!-- Navbar Brand-->
+  <%= link_to t("home"), root_path, class: "active", class: "navbar-brand" %>
+  <!-- Sidebar Toggle-->
+  <% if logged_in? %>
+    <%= link_to t("category"), category_path, class: "nav-link" %>
+    <%= link_to t("product"), product_path, class: "nav-link" %>
+    <%= link_to t("order"), order_path, class: "nav-link" %>
+    <%= link_to t("account"), account_path, class: "nav-link" %>
+    <%= link_to t("publisher"), root_path, class: "nav-link" %>
+    <%= link_to t("author"), root_path, class: "nav-link" %>
+  <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+      </div>
+    </form>
+  <% end %>
+
+  <ul class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    <%= link_to "en", locale: :en %> 
+    <%= link_to "vi", locale: :vi %>
+  </ul>
+  <!-- Navbar-->
+  <% if logged_in? %>
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li><%= link_to t("profile"), current_user, class: "dropdown-item" %></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><%= button_to t("logout"), logout_path, method: :delete, class: "dropdown-item" %></li>
+        </ul>
+      </li>
+    </ul>
+    <% else %>
+      <%= link_to t("login"), login_path, class: "nav-link" %>
+      <%= link_to t("signup"), signup_path, class: "nav-link" %>
+  <% end %>
+</nav>

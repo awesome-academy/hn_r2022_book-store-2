@@ -1,0 +1,30 @@
+<% provide(:title, @user.name) %>
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <h4><%= t "info" %></h4>
+    <h1>
+      <%= gravatar_for @user %>
+      <%= @user.name %>
+    </h1>
+    <table class="table">
+        <tr>
+          <th scope="col"><%= t "email" %></th>
+          <td scope="col">        
+            <label><%= @user.email %></label>
+          </td>
+        </tr>
+        <tr>
+          <th scope="col"><%= t "phone" %></th>
+          <td scope="col">        
+            <label><%= @user.phone %></label>
+          </td>
+        </tr>
+        <tr>
+          <th scope="col"><%= t "address" %></th>
+          <td scope="col">        
+            <label><%= @user.address %></label>
+          </td>
+        </tr>
+    </table>
+  </h2>
+</div>
