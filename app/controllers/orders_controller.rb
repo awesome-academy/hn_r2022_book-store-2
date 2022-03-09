@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :check_login
-  before_action :load_order, only: %i(destroy)
+  before_action :authenticate_user!
 
   def new; end
 

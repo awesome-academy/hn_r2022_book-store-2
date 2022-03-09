@@ -1,0 +1,11 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="form-floating mb-3">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <label><%= t "email" %></label>
+  </div>
+  <div class="d-flex align-items-center justify-content-between mt-2 mb-2">
+    <%= f.submit t("submit"), class: "btn btn-primary" %>
+  </div>
+  <%= render "devise/shared/links" %>
+<% end %>

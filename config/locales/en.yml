@@ -36,6 +36,7 @@ en:
   signup: "Sign up"
   wanna_login: "Have an account? Login"
   confirm: "Confirm Password"
+  submit: "Submit"
 
   create: "Create"
   create_category: "Create category"

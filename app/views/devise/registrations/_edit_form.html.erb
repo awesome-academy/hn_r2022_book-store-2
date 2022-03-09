@@ -1,0 +1,40 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="form-floating mb-3">
+    <%= f.email_field :email, autofocus: true, disabled: true, class: "form-control" %>
+    <label><%= t "email" %></label>
+  </div>
+  <div class="form-floating mb-3">
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+    <label><%= t "current_password" %></label>
+  </div>
+  <div class="form-floating mb-3">
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    <label><%= t "new_password" %></label>
+  </div>
+  <div class="form-floating mb-3">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    <label><%= t "confirmation" %></label>
+  </div>
+  <div class="form-floating mb-3">
+    <%= f.text_field :name, autofocus: true, class: "form-control" %>
+    <label><%= t "name" %></label>
+  </div>
+  <div class="form-floating mb-3">
+    <%= f.text_field :phone, autofocus: true, class: "form-control" %>
+    <label><%= t "phone" %></label>
+  </div>
+  <div class="form-floating mb-3">
+    <%= f.text_field :address, autofocus: true, class: "form-control" %>
+    <label><%= t "address" %></label>
+  </div>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div><%= t("wait_confirm_email") + resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="d-flex align-items-center justify-content-between mt-2 mb-2">
+    <%= f.submit t("update", default: "Update"), class: "btn btn-primary" %>
+    <%= button_to t("delele_my_account", default: "Delete my account"), registration_path(resource_name), data: { confirm: t("you_sure") }, method: :delete, class: "btn btn-danger" %>
+  </div>
+<% end %>
+

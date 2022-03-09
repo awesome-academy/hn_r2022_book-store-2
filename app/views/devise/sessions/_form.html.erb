@@ -1,0 +1,19 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-floating mb-3">
+    <%= f.email_field :email, class: "form-control" %>
+    <label><%= t "email" %></label>
+  </div>
+  <div class="form-floating mb-3">
+    <%= f.password_field :password, class: "form-control" %>
+    <label><%= t "password" %></label>
+  </div>
+  
+  <div class="d-flex align-items-center justify-content-between mt-2 mb-2">
+    <div class="form-check mb-3">
+      <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+      <label class="form-check-label" for="inputRememberPassword"><%= t "remember" %></label>
+    </div>
+    <%= f.submit t("login"), class: "btn btn-primary" %>
+  </div>
+  <%= render "devise/shared/links" %>
+<% end %>

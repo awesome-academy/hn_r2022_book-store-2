@@ -1,11 +1,11 @@
 class User < ApplicationRecord
-  has_many :orders, dependent: :destroy
-
   PROPERTIES = %i(name email address phone
-                  password password_confirmation).freeze
-  before_save :downcase_email
+    password password_confirmation remember_me).freeze
 
-  enum role: {user: 0, admin: 1}
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :confirmable
+
+  has_many :orders, dependent: :destroy
 
   validates :name, presence: true,
     length: {maximum: Settings.digit_50}
@@ -21,11 +21,5 @@ class User < ApplicationRecord
     length: {minimum: Settings.digit_6},
     allow_nil: true
 
-  has_secure_password
-
-  private
-
-  def downcase_email
-    email.downcase!
-  end
+  enum role: {user: 0, admin: 1}
 end

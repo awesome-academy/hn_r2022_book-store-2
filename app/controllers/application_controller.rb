@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+  include BooksHelper
 
   before_action :set_locale
+  before_action :permit_params, if: :devise_controller?
   protect_from_forgery with: :exception
-  include SessionsHelper
-  include BooksHelper
 
   private
   def set_locale
@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     {locale: I18n.locale}
+  end
+
+  def current_user_admin?
+    return false unless current_user.admin?
+
+    redirect_to admin_root_path
   end
 
   def load_user
@@ -38,11 +44,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def load_order
-    @order = Order.find_by id: params[:id]
-    return if @order
-
-    flash[:danger] = t "order_not_found"
-    redirect_to root_path
+  def permit_params
+    devise_parameter_sanitizer.permit :sign_up, keys: User::PROPERTIES
+    devise_parameter_sanitizer.permit :account_update, keys: User::PROPERTIES
   end
 end

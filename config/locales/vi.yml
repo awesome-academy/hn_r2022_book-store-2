@@ -36,8 +36,9 @@ vi:
   signup: Đăng ký
   wanna_login: "Có tài khoản? Đăng nhập"
   confirm: "Xác nhận mật khẩu"
+  submit: "Xác nhận"
 
-  create: "Create"
+  create: "Tạo"
   create_category: "Tạo danh mục"
   update_category: "Cập nhật danh mục"
   wanna_signup: "Cần một tài khoản?"

@@ -1,0 +1,13 @@
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="form-floating mb-3">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <label><%= t "email" %></label>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t(".resend_unlock") %>
+  </div>
+  <%= render "devise/shared/links" %>
+<% end %>

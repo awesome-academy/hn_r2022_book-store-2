@@ -38,7 +38,21 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   config.assets.debug = true
+
   config.assets.quiet = true
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {host: ENV["HOST"]}
+  config.action_mailer.smtp_settings = {
+    user_name: ENV["EMAIL_USER_NAME"],
+    password: ENV["EMAIL_USER_PASSWORD"],
+    address: ENV["EMAIL_ADDRESS"],
+    port: ENV["EMAIL_PORT"],
+    authentication: :plain,
+    enable_starttls_auto: true 
+  }
+
+  config.hosts.clear
 end
