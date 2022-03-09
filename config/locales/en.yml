@@ -70,19 +70,3 @@ en:
     add_to_cart: "Add to cart"
     order: 
       product: "Your Product"
-
-  dont_move_book: "Please double check before deleting book"
-  save_change: "Save change"
-  update_fail: "Update fail"
-  delete_fail: "Delete fail"
-  fail: "Fail"
-  created: "Created"
-
-  updated: "Updated"
-  update_failed: "Update failed"
-  deleted: "Deleted"
-  delete_failed: "Delete failed"
-  edit: "Edit"
-  sure: "Are you sure?"
-  cancel_confirm: "Are you sure cancel this order?"
-  reject_confirm: "Are you sure reject this order?"

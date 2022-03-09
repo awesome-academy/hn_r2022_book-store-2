@@ -12,9 +12,9 @@
   <td><%= book.publisher_name %></td>
   <td><%= book.authors.pluck(:name).join(" ,") %></td>
   <td>
-    <%= link_to t("edit"), edit_admin_book_path(book),
+    <%= link_to t(".edit"), edit_admin_book_path(book),
     class: "btn btn-warning" %>
-  <%= link_to t("delete"), [:admin, book], method: :delete,
-      class: "btn btn-danger", data: { confirm: t("sure") } %>
+  <%= link_to t(".delete"), [:admin, book], method: :delete,
+      class: "btn btn-danger", data: { confirm: t(".rusure") } %>
   </td>
 </tr>

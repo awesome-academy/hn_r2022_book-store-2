@@ -14,8 +14,3 @@ book_img_height: 320
 page_items_10: 10
 phone_number_lenght: !ruby/range 10..10
 digit_10: 10
-orders_per_page: 10
-status_pending: "pending"
-status_accepted: "accepted"
-status_rejected: "rejected"
-status_shipped: "shipped"

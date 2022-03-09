@@ -11,6 +11,18 @@
   </td>
   <td class="font-weight-semibold align-middle p-4"><%= price_format(@book.price) %></td>
   <td class="align-middle p-4">
+    <div class="row">
+      <%= link_to "-", 
+        quantity_minus_path,
+        data: {params: "book_id=#{cart["book_id"]}"}, method: :put,
+        remote: true, class: "btn btn-primary col mr-1"
+      %>
+      <input type="number" size="2" class="form-control col-5" title="Qty" value="<%= cart["quantity"] %>" min="0" disabled>
+      <%= link_to "+", quantity_plus_path,
+        data: {params: "book_id=#{cart["book_id"]}"}, method: :put,
+        remote: true, class: "btn btn-primary col ml-1"
+      %>
+    </div>
     <%= render partial: "quantities/quantity", locals: {cart: cart} %>
   </td>
   <td class="font-weight-semibold align-middle p-4"><%= price_format(cart["quantity"]*@book.price) %></td>

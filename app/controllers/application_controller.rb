@@ -37,12 +37,4 @@ class ApplicationController < ActionController::Base
       @get_cart_book = item if item["book_id"] == params[:book_id].to_i
     end
   end
-
-  def load_order
-    @order = Order.find_by id: params[:id]
-    return if @order
-
-    flash[:danger] = t "order_not_found"
-    redirect_to root_path
-  end
 end

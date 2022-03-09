@@ -1,6 +1,6 @@
 class Admin::BooksController < AdminController
   before_action :load_book, except: %i(index new create)
-  before_action :check_order_details, only: :destroy
+  before_action :check_order_detail, except: %i(destroy)
 
   def index
     @pagy, @books = pagy Book.recent_add.search(params[:term]),
@@ -16,13 +16,15 @@ class Admin::BooksController < AdminController
 
   def create
     @book = Book.new book_params
-    insert_to_book_author
+    params.dig(:book, :book_authors, :author_id)&.compact_blank!&.each do |val|
+      @book.book_authors.build[:author_id] = val
+    end
 
     if @book.save
-      flash[:success] = t "success"
+      flash[:success] = t ".success"
       redirect_to admin_books_path
     else
-      flash.now[:danger] = t "fail"
+      flash.now[:danger] = t ".fail"
       render :new
     end
   end
@@ -41,12 +43,14 @@ class Admin::BooksController < AdminController
   end
 
   def destroy
+    check_order_detail
+
     if @book.destroy
-      flash[:success] = t "success"
+      flash[:success] = t ".success"
     else
-      flash[:danger] = t "fail"
+      flash.now[:danger] = t ".fail"
     end
-    redirect_to admin_books_path
+    redirect_to [:admin, @book]
   end
 
   private
@@ -60,7 +64,7 @@ class Admin::BooksController < AdminController
     return if @book
 
     flash[:danger] = t "not_found"
-    redirect_to admin_books_path
+    redirect_to admin_root_path
   end
 
   def book_image_attach
@@ -83,10 +87,10 @@ class Admin::BooksController < AdminController
     redirect_back fallback_location: admin_books_path
   end
 
-  def check_order_details
-    return if @book.order_details.empty?
+  def check_order_detail
+    return if @book.order_details.present?
 
-    flash[:danger] = t "dont_move_book"
-    refresh
+    flash.now[:danger] = t "dont_move"
+    redirect_to admin_root_path
   end
 end

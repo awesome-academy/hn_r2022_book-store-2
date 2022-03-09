@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :categories, only: %i(show)
     resources :books, only: %i(index show)
     resources :carts, only: :create
-    resources :orders, except: %i(edit)
+    resources :orders, only: %i(index show new create)
     namespace :admin do
       resources :homes
       resources :categories

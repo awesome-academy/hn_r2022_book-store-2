@@ -52,6 +52,10 @@
               <%= link_to t("login"), login_path, class: "text-decoration-none" %>
             </h5>
           <% end %>
+          <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">
+            <%= link_to t("back"), books_path, class:"text-decoration-none" %>
+          </button>
+          <button type="button" class="btn btn-lg btn-primary mt-2"><%= t "checkout" %></button>
         </div>
       </div>
     </div>

@@ -1,21 +1,23 @@
 <div class="container-fluid px-4">
-  <h3 class="mt-4"><%= t "order_list" %></h3>
+  <h1 class="mt-4"><%= t "order" %></h1>
   <table class="table table-bordered">
     <thead class="thead-dark">
       <tr>
-        <th scope="col"><%= t "order_name" %></th>
-        <th scope="col"><%= t "deli_address" %></th>
-        <th scope="col"><%= t "deli_phone" %></th>
-        <th scope="col"><%= t "product" %></th>
+        <th scope="col"><%= t "id" %></th>
+        <th scope="col"><%= t "order_at" %></th>
+        <th scope="col"><%= t "customer_name" %></th>
         <th scope="col"><%= t "status" %></th>
-        <th scope="col"><%= t "option" %></th>
+        <th scope="col"><%= t "shiped_date" %></th>
       </tr>
     </thead>
     <tbody>
-      <div class="admin-orders-list">
-        <%= render @orders %>
-      </div>
+      <tr>
+        <th scope="row">1</th>
+        <td>example</td>
+        <td>example</td>
+        <td>example</td>
+        <td>example</td>
+      </tr>
     </tbody>
   </table>
-   <%== pagy_bootstrap_nav(@pagy) %>
 </div>

@@ -13,7 +13,10 @@
 </table>
 <table class="table table-bordered">
   <tbody>
-
+    <tr>
+      <th><%= t "total_order" %></th>
+      <td><%= price_format(order.order_price) %></td>
+    </tr>
     <tr>
       <th><%= t "order_at" %></th>
       <td><%= order.created_at.to_formatted_s(:long_ordinal) %></td>

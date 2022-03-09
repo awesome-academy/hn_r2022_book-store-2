@@ -1,5 +1,3 @@
-@import "color";
-
 body{
     padding-bottom: 50px;
 }
@@ -44,39 +42,4 @@ body{
     font-size: 1.5rem;
     font-weight: bold;
     width: 200px;
-}
-
-.badge-pending{
-  color: $white;
-  background-color: $pending-bg;
-}
-
-.badge-accepted{
-  color: $white;
-  background-color: $accepted-bg;
-}
-
-.badge-shipped{
-  color: $white;
-  background-color: $shipped-bg;
-}
-
-.badge-rejected{
-  color: $black;
-  background-color: $rejected-bg;
-}
-
-.badge-canceled{
-  color: $white;
-  background-color: $canceled-bg;
-}
-
-.badges {
-  display: inline-block;
-  padding: .75em .65em;
-  line-height: 1;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25rem;
 }

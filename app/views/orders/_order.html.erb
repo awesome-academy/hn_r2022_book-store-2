@@ -15,27 +15,8 @@
       </div>
     </div>
   </td>
-  <td>
-    <% order.order_details.each do |od| %>
-      <div>
-        <%= link_to od.book.name, book_path(od.book.id) %> x
-        <%= od.quantity %>
-      </div>
-    <% end %>
-  </td>
-  <td><%= order.created_at.to_formatted_s(:long_ordinal) %></td>
-  <td>
-    <span class="badges badge-<%= order.status %>">
-      <%= order.status %>
-    </span>
-  </td>
-  <td>
-    <% if order.status_pending? || order.status_accepted? %>
-      <%= link_to t("detail"), order_path(order.id), class: "btn btn-warning center" %>
-      <%= link_to t("cancel_order"), order_path(id: order.id), {data: {confirm: t("cancel_confirm")}, method: :delete, remote: true, class: "btn btn-danger"}%>
-    <% else %>
-      <%= link_to t("detail"), order_path(order.id), class: "btn btn-warning center" %>
-      <%= link_to t("keep_ordering"), books_path, class: "btn btn-info"%>
-    <% end %>
-  </td>
+  <td class="font-weight-semibold align-middle p-4"><%= order.created_at.to_formatted_s(:long_ordinal) %></td>
+  <td class="font-weight-semibold align-middle p-4"><%= order.status %></td>
+  <td class="font-weight-semibold align-middle p-4"><%= order.shiped_date %></td>
+  <td><%= link_to t("detail"), order_path(order.id), class: "btn btn-warning center" %></td>
 </tr>
