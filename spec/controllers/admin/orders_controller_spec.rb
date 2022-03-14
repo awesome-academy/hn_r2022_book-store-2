@@ -1,0 +1,57 @@
+require "rails_helper"
+
+RSpec.describe Admin::OrdersController, type: :controller do
+  let(:order){FactoryBot.create :order}
+
+  describe "before action callbacks" do
+    it {is_expected.to use_before_action(:load_newest_order)}
+  end
+
+  describe "PATCH #update" do
+    context "when update order status success" do
+      before do
+        patch :update, params: {id: order.id, order:{status: "pending"}}
+      end
+      it "should status is accepted" do
+        order.status_accepted!
+        expect(order.status).to eq "accepted"
+      end
+    end
+    context "when update order status fail" do
+      before do
+        allow_any_instance_of(Order).to receive(:status_accepted!).and_raise(ActiveRecord::RecordInvalid)
+        patch :update, params: {id: order.id, order:{status: "accepted"}}
+      end
+      it "should flash danger" do
+        expect(flash[:danger]).to eq I18n.t "update_fail"
+      end
+      it "should redirect to admin orders path" do
+        expect(response).to redirect_to admin_orders_path
+      end
+    end
+  end
+
+  describe "DELETE #destroy" do
+    context "when reject order success" do
+      before do
+        delete :destroy, params: {id: order.id}
+      end
+      it "should status is rejected" do
+        order.status_rejected!
+        expect(order.status_rejected!).to eq true
+      end
+    end
+    context "when reject order fail" do
+      before do
+        allow_any_instance_of(Order).to receive(:status_rejected!).and_raise(ActiveRecord::RecordInvalid)
+        delete :destroy, params: {id: order.id, order:{status: "rejected"}}
+      end
+      it "should flash danger" do
+        expect(flash[:danger]).to eq I18n.t "delete_fail"
+      end
+      it "should redirect to admin orders path" do
+        expect(response).to redirect_to admin_orders_path
+      end
+    end
+  end
+end
