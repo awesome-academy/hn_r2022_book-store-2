@@ -6,7 +6,7 @@ class Admin::OrdersController < AdminController
 
   def update
     ActiveRecord::Base.transaction do
-      @order.public_send("status_#{params[:order][:status]}!")
+    @order.public_send("status_#{params[:order][:status]}!")
     end
     refresh
   rescue ActiveRecord::RecordInvalid
