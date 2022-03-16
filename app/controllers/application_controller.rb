@@ -48,4 +48,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: User::PROPERTIES
     devise_parameter_sanitizer.permit :account_update, keys: User::PROPERTIES
   end
+
+  def load_order
+    @order = Order.find_by id: params[:id]
+    return if @order
+
+    flash[:danger] = t "order_not_found"
+    redirect_to root_path
+  end
 end

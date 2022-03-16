@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
-ruby "2.7.0"
+ruby "2.7.1"
 
 gem "active_storage_validations", "0.8.2"
 gem "bcrypt", "3.1.13"
@@ -23,7 +23,7 @@ gem "pry-rails", "~> 0.3.9"
 gem "puma", "~> 5.0"
 gem "rails", "~> 6.1.4", ">= 6.1.4.4"
 gem "rails-i18n"
-gem "rake"
+gem "rake", "13.0.1"
 gem "sass-rails", ">= 6"
 gem "simplecov"
 gem "simplecov-rcov"
