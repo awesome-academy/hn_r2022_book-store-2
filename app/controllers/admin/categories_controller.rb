@@ -20,7 +20,7 @@ class Admin::CategoriesController < AdminController
     @category = Category.new category_params
     if @category.save
       flash[:success] = t "created"
-      redirect_to [:admin, @category]
+      redirect_to admin_categories_path
     else
       render :new
     end
@@ -58,7 +58,7 @@ class Admin::CategoriesController < AdminController
     return if @category
 
     flash[:danger] = t "not_found"
-    redirect_to admin_root_path
+    redirect_to admin_categories_path
   end
 
   def check_books

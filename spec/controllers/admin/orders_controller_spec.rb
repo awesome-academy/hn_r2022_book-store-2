@@ -1,8 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Admin::OrdersController, type: :controller do
-  let(:user){FactoryBot.create :user, role: 1}
+  let(:user){FactoryBot.create :user, role: 1, confirmed_at: Time.zone.now}
   let(:order){FactoryBot.create :order, user_id: user.id}
+
+  before do
+    sign_in user
+  end
 
   describe "before action callbacks" do
     it {is_expected.to use_before_action(:load_and_search_orders)}
@@ -26,7 +30,7 @@ RSpec.describe Admin::OrdersController, type: :controller do
         expect(flash[:danger]).to eq I18n.t "update_fail"
       end
       it "should redirect to admin orders path" do
-        expect(response).to redirect_to admin_orders_path
+        expect(response).to redirect_to admin_orders_url
       end
     end
   end
@@ -53,7 +57,7 @@ RSpec.describe Admin::OrdersController, type: :controller do
         expect(flash[:danger]).to eq I18n.t "delete_fail"
       end
       it "should redirect to admin orders path" do
-        expect(response).to redirect_to admin_orders_path
+        expect(response).to redirect_to admin_orders_url
       end
     end
   end

@@ -2,9 +2,9 @@ class Order < ApplicationRecord
   ORDER_PROPERTIES = %i(customer_name delivery_phone
                       delivery_address note).freeze
 
-  after_update :reduce_quantity, if: ->{@order.status_pending?}
+  after_update :reduce_quantity, if: ->{status_pending?}
   after_update :restore_quantity,
-               if: ->{@order.status_rejected? || @order.status_canceled?}
+               if: ->{status_rejected? || status_canceled?}
 
   belongs_to :user
   has_many :order_details, dependent: :destroy
@@ -25,13 +25,13 @@ class Order < ApplicationRecord
   private
 
   def restore_quantity
-    @order.order_details.each do |od|
+    order_details.each do |od|
       od.book.update! quantity: od.book.quantity + od.quantity
     end
   end
 
   def reduce_quantity
-    @order.order_details.each do |od|
+    order_details.each do |od|
       od.book.update! quantity: od.book.quantity - od.quantity
     end
   end
