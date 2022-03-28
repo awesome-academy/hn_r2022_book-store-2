@@ -1,5 +1,7 @@
+require "sidekiq/web"
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
+    mount Sidekiq::Web => "/sidekiq"
     devise_for :users
     root "store#home"
     get "store/home"

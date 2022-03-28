@@ -18,10 +18,11 @@ class OrdersController < ApplicationController
 
   def create
     init_order
-    create_order_detail
     ActiveRecord::Base.transaction do
       @order.status_pending!
       @order.save!
+      CreateOrderDetailJob.set(wait: Settings.digit_50.seconds)
+                          .perform_later @order, session[:cart]
       handle_success_create_order
     end
   rescue StandardError => e
@@ -68,6 +69,7 @@ class OrdersController < ApplicationController
   end
 
   def handle_success_create_order
+    session[:cart] = []
     flash[:success] = t "success"
     redirect_to root_url
   end
