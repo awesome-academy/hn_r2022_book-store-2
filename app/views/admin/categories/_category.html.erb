@@ -3,9 +3,16 @@
   <td><%= link_to category.name, [:admin, category] %></td>
   <td><%= category.desc %></td>
   <td>
-    <%= link_to t("edit"), edit_admin_category_path(category),
-        class: "btn btn-warning" %>
-    <%= link_to t("delete"), [:admin, category], method: :delete,
-      class: "btn btn-danger", data: { confirm: t("sure") } %>
+    <%= link_to edit_admin_category_path(category) do %>
+    <label class="btn btn-warning">
+        <i class="fas fa-edit"></i>
+      </label>
+    <% end %>
+    <%= link_to [:admin, category], method: :delete,
+      data: { confirm: t("sure") } do %>
+      <label class="btn btn-danger">
+        <i class="fa fa-trash"></i>
+      </label>
+    <% end %>
   </td>
 </tr>

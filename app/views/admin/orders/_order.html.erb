@@ -17,13 +17,25 @@
   </td>
   <td>
     <% if order.status_pending? %>
-      <%= link_to t(".accept"), admin_order_path(id: order.id, status: Settings.status_accepted),
-          method: :patch, remote: true, class: "btn btn-success" %>
-      <%= link_to t(".reject"), admin_order_path(id: order.id, status: Settings.status_rejected),
-          {data: {confirm: t("reject_confirm")}, method: :delete, remote: true, class: "btn btn-warning"}%>
+      <%= link_to admin_order_path(id: order.id, status: Settings.status_accepted),
+        method: :patch, remote: true do %>
+        <label class="btn btn-success">
+          <i class="fa fa-check"></i>
+        </label>
+      <% end %>
+      <%= link_to admin_order_path(id: order.id, status: Settings.status_rejected),
+        data: {confirm: t("reject_confirm")}, method: :delete, remote: true do %>
+        <label class="btn btn-warning">
+          <i class="fa fa-times"></i>
+        </label>
+      <% end %>
     <% elsif order.status_accepted? %>
-      <%= link_to t(".ship"), admin_order_path(id: order.id, status: Settings.status_shipped),
-          method: :patch, remote: true, class: "btn btn-primary" %>
+      <%= link_to admin_order_path(id: order.id, status: Settings.status_shipped),
+        method: :patch, remote: true do %>
+        <label class="btn btn-primary">
+        <i class="fas fa-shipping-fast"></i>
+      </label>
+    <% end %>
     <% end %>
   </td>
 </tr>
