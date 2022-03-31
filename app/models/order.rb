@@ -20,6 +20,8 @@ class Order < ApplicationRecord
   scope :get_order, ->(user_id){where(user_id: user_id) if user_id.present?}
   scope :newest, ->{order created_at: :desc}
 
+  ransack_alias :order, :delivery_address_or_delivery_phone_or_customer_name
+
   validates :status, inclusion: {in: statuses.keys}
 
   private

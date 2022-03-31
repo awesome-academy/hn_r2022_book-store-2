@@ -59,7 +59,7 @@ vi:
   not_permission: "Không có quyền truy cập!"
   you_sure: "Bạn có chắc?"
 
-  info: "Thông tin"
+  info: "Thông tin tìm kiếm"
   price_greater_than: "Giá lớn hơn"
   price_less_than: "Giá nhỏ hơn"
   create_date: "Ngày tạo"
@@ -77,3 +77,14 @@ vi:
     add_to_cart: "Thêm vào giỏ"
     order:
       product: "Sản phẩm của bạn"
+
+  create_date_greater_than: "Ngày tạo lớn hơn"
+  create_date_less_than: "Ngày tạo nhỏ hơn"
+  total_price: "Tổng tiền"
+  option: "Tùy chọn"
+  receiver_information: "Thông tin người nhận"
+  rejected: "Đã từ chối"
+  accepted: "Đã xác nhận"
+  pending: "Đang xử lý"
+  shipped: "Đã giao"
+  canceld: "Đã hủy"

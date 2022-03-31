@@ -23,19 +23,36 @@
       </div>
     <% end %>
   </td>
-  <td><%= order.created_at.to_formatted_s(:long_ordinal) %></td>
+  <td><%= order.created_at %></td>
+  <td><%= order.order_price %></td>
   <td>
     <span class="badges badge-<%= order.status %>">
-      <%= order.status %>
+      <%= t(""<< order.status) %>
     </span>
   </td>
   <td>
     <% if order.status_pending? || order.status_accepted? %>
-      <%= link_to t("detail"), order_path(order.id), class: "btn btn-warning center" %>
-      <%= link_to t("cancel_order"), order_path(id: order.id), {data: {confirm: t("cancel_confirm")}, method: :delete, remote: true, class: "btn btn-danger"}%>
+      <%= link_to order_path(order.id) do %>
+        <label class="btn btn-warning">
+          <i class="fa fa-eye"></i>
+        </label>
+      <% end %>
+      <%= link_to order_path(id: order.id), data: {confirm: t("cancel_confirm")}, method: :delete, remote: true do %>
+        <label class="btn btn-danger">
+          <i class="fa fa-times"></i>
+        </label>
+      <% end %>
     <% else %>
-      <%= link_to t("detail"), order_path(order.id), class: "btn btn-warning center" %>
-      <%= link_to t("keep_ordering"), books_path, class: "btn btn-info"%>
+      <%= link_to order_path(order.id) do %>
+        <label class="btn btn-warning">
+          <i class="fa fa-eye"></i>
+        </label>
+      <% end %>
+      <%= link_to books_path do %>
+        <label class="btn btn-info">
+          <i class="fa fa-undo"></i>
+        </label>
+      <% end %>
     <% end %>
   </td>
 </tr>

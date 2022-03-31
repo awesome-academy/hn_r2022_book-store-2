@@ -6,6 +6,9 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.get_order(current_user[:id]).newest
+    @search = Order.ransack params[:q]
+    @pagy, @orders = pagy @search.result.newest,
+                          items: Settings.page_items_10
   end
 
   def show

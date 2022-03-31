@@ -12,6 +12,9 @@ class CreateOrderDetailJob < ApplicationJob
         book_id: book.id
       )
     end
+    @order.order_details.each do |od|
+      @order.order_price += od.quantity * od.price
+    end
     @order.save
   end
 end
