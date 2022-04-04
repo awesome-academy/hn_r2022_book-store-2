@@ -4,6 +4,7 @@ git_source(:github){|repo| "https://github.com/#{repo}.git"}
 ruby "2.7.0"
 
 gem "active_storage_validations", "0.8.2"
+gem "activerecord-session_store"
 gem "bcrypt", "3.1.13"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "bootstrap-sass", "3.4.1"
@@ -18,6 +19,9 @@ gem "jbuilder", "~> 2.7"
 gem "jquery-rails"
 gem "mini_magick", "4.9.5"
 gem "mysql2"
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
 gem "pagy"
 gem "pry-byebug", "~> 3.9"
 gem "pry-rails", "~> 0.3.9"
