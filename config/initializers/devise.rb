@@ -18,4 +18,13 @@ Devise.setup do |config|
   config.reset_password_within = 6.hours
 
   config.scoped_views = true
+
+  OmniAuth.config.allowed_request_methods = [:post, :get]
+  OmniAuth.config.silence_get_warning = true
+
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], {
+    scope: "userinfo.profile,userinfo.email",
+    access_type: "offline",
+    approval_prompt: "force"
+  }
 end
