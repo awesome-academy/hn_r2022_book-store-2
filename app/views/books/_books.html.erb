@@ -18,6 +18,9 @@
         <%= f.number_field :book_id, value: book.id, hidden: true %>
         <%= f.submit t("store.add_to_cart"), class: "btn btn-primary" %>
       <% end %>
+      <div class="beta-sales beta-lists">
+        <%= social_share_button_tag t("the_good_book"), desc: book.desc %>
+      </div>
     </div>
   </div>
 </div>

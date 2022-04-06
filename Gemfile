@@ -34,6 +34,7 @@ gem "sass-rails", ">= 6"
 gem "sidekiq", "~> 6.1.0"
 gem "simplecov"
 gem "simplecov-rcov"
+gem "social-share-button"
 gem "toastr-rails"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)

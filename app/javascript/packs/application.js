@@ -12,6 +12,7 @@ import 'owl.carousel';
 import 'toastr'
 import '@popperjs/core';
 
+require('packs/social-share-button.js.erb')
 require('jquery')
 require('toastr')
 
