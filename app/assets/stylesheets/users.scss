@@ -80,3 +80,50 @@ body{
   vertical-align: baseline;
   border-radius: .25rem;
 }
+
+.bg-orange {
+  background-color: $orange;
+}
+
+.nav-link {
+  color: $white !important;
+}
+
+.btn-orange {
+  color: $white;
+  background-color: $orange;
+  border-color: $orange;
+}
+
+.btn-orange-nobg {
+  color: $orange;
+  border-color: $orange !important;
+}
+
+h6 {
+  a {
+    color: $orange;
+  }
+}
+
+.ml-auto {
+  padding-left: 300px;
+}
+
+th {
+  a {
+    color: $white;
+  }
+}
+
+.row {
+  .col-4 {
+    max-width: 40% !important;
+    margin-top: 300px;
+    background-color: $orange;
+    .nav-link {
+      padding-top: 20px;
+      border-top: 1px solid $white;
+    }
+  }
+}

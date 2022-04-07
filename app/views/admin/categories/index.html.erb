@@ -1,20 +1,34 @@
 <% provide :title, t("all_category") %>
+<% provide :button_text, t("create_category") %>
 <div class="container">
   <h1><%= t "all_category" %></h1>
-
   <div class="d-flex justify-content-between align-items-center">
-    <%= link_to t("create"), new_admin_category_path, class: "btn btn-info" %>
+    <button type="button" class="btn btn-orange" data-toggle="modal" data-target="#categoryModal" data-whatever="@mdo"><%= t("create_category") %></button>
+    <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="categoryModalLabel"><%= t("create_category") %></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render "form" %>
+          </div>
+        </div>
+      </div>
+    </div>
     <%= render "form_search" %>
   </div>
-
   <hr class="sidebar-divider">
   <table class="table table-bordered">
     <thead class="thead-dark">
       <tr>
-        <th scope="col"><%= t ".index" %></th>
-        <th scope="col"><%= t ".name" %></th>
-        <th scope="col"><%= t ".description" %></th>
-        <th scope="col"><%= t ".action" %></th>
+        <th scope="col"><%= t "index" %></th>
+        <th scope="col"><%= t "name" %></th>
+        <th scope="col"><%= t "desc" %></th>
+        <th scope="col"><%= t "action" %></th>
       </tr>
     </thead>
     <tbody>

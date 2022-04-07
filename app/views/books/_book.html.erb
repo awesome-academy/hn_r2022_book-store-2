@@ -17,13 +17,18 @@
             <span><%= t "price" %>: <%= price_format @book.price %></span>
           </div>
           <div class="">
-            <span><%= t "quantity" %>: <%= @book.quantity %></span>
+            <% if @book.quantity == Settings.zero %>
+              <span><%= t "sold_out" %></span>
+            <% else %>
+              <span><%= t "quantity" %>: <%= @book.quantity %></span>
+            <% end %>
           </div>
           <div class="product-count row">
             <%= form_for(Cart.new, url: carts_path) do |f| %>
               <%= f.number_field :quantity, min: 1, max: @book.quantity, value: 1 %>
               <%= f.number_field :book_id, value: @book.id, hidden: true %>
-              <%= f.submit t("store.add_to_cart"), class: "round-black-btn" %>
+              <%= f.submit t("store.add_to_cart"),
+                disabled: @book.quantity == Settings.zero, class: "round-black-btn btn-orange" %>
               <%= social_share_button_tag t("the_good_book"), desc: @book.desc %>
             <% end %>
           </div>

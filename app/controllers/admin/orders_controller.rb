@@ -9,6 +9,8 @@ class Admin::OrdersController < AdminController
     @pagy, @orders = pagy @orders
   end
 
+  def show; end
+
   def update
     ActiveRecord::Base.transaction do
       @order.public_send("status_#{params[:status]}!")
