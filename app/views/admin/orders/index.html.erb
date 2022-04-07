@@ -1,6 +1,13 @@
 <div class="container-fluid px-4">
   <h3 class="mt-4"><%= t "order_list" %></h3>
-  <%= render "form_search" %>
+  <div>
+    <%= render "form_search" %>
+    <%= form_tag admin_orders_path, method: :get, class: "form-inline pull-right" do %>
+      <%= hidden_field_tag :status_change,  Settings.status_accepted %>
+      <%= submit_tag t("accept_all_new"), data: {confirm: t("accept_all_new")},
+        class: "btn btn-primary" %>
+    <% end %>
+  </div>
   <hr class="sidebar-divider">
   <table class="table table-bordered">
     <thead class="thead-dark">
