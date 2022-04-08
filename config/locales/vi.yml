@@ -90,3 +90,6 @@ vi:
   canceld: "Đã hủy"
   sign_in_with: "Đăng nhập bằng tài khoản Google"
   the_good_book: "Đây là 1 cuốn sách hay!"
+  accept_all_new: "Xác nhận tất cả đơn đặt hàng mới"
+  accept_success: "Tất cả các đơn đặt hàng đã được xác nhận"
+  order_not_found: "Không có đơn đặt hàng nào đang chờ xử lý"
