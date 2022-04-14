@@ -1,10 +1,11 @@
-<div class="container-fluid px-4">
+<div class="container-fluid">
   <h3 class="mt-4"><%= t "my_order" %></h3>
   <%= render "form_search" %>
   <hr class="sidebar-divider">
   <table class="table table-bordered">
     <thead class="thead-dark">
       <tr>
+        <th scope="col"><%= t "index" %></th>
         <th scope="col"><%= t "receiver_information" %></th>
         <th scope="col"><%= t "product" %></th>
         <th scope="col"><%= sort_link @search, :created_at, t("create_date") %></th>

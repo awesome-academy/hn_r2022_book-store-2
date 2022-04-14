@@ -1,7 +1,21 @@
 <tr>
-  <td><%= order.customer_name %></td>
-  <td><%= order.delivery_address %></td>
-  <td><%= order.delivery_phone %></td>
+  <th scope="row"><%= order_counter + 1 %></th>
+  <td class="font-weight-semibold align-middle">
+    <div class="col pl-0">
+      <div>
+        <%= t "name" %>:
+        <%= order.customer_name %>
+      </div>
+      <div>
+        <%= t "phone" %>:
+        <%= order.delivery_phone %>
+      </div>
+      <div>
+        <%= t "address" %>:
+        <%= order.delivery_address %>
+      </div>
+    </div>
+  </td>
   <td>
     <% order.order_details.each do |od| %>
       <div>
@@ -10,6 +24,8 @@
       </div>
     <% end %>
   </td>
+  <td><%= order.order_price %></td>
+  <td><%= order.created_at %></td>
   <td>
     <span class="badges badge-<%= order.status %>">
       <%= t(""<< order.status) %>

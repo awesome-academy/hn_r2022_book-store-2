@@ -16,7 +16,14 @@
       <%= form_for(Cart.new, url: carts_path) do |f| %>
         <%= f.number_field :quantity, value: 1, hidden: true %>
         <%= f.number_field :book_id, value: book.id, hidden: true %>
-        <%= f.submit t("store.add_to_cart"), class: "btn btn-primary" %>
+        <% if book.quantity == Settings.zero %>
+          <label class="btn btn-orange-nobg">
+            <%= t "sold_out"%>
+          </label>
+        <% else %>
+          <%= f.submit t("store.add_to_cart"),
+            disabled: book.quantity == Settings.zero, class: "btn btn-orange" %>
+        <% end %>
       <% end %>
       <div class="beta-sales beta-lists">
         <%= social_share_button_tag t("the_good_book"), desc: book.desc %>

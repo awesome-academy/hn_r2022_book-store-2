@@ -5,17 +5,18 @@
     <%= form_tag admin_orders_path, method: :get, class: "form-inline pull-right" do %>
       <%= hidden_field_tag :status_change,  Settings.status_accepted %>
       <%= submit_tag t("accept_all_new"), data: {confirm: t("accept_all_new")},
-        class: "btn btn-primary" %>
+        class: "btn btn-orange" %>
     <% end %>
   </div>
   <hr class="sidebar-divider">
   <table class="table table-bordered">
     <thead class="thead-dark">
       <tr>
-        <th scope="col"><%= t "order_name" %></th>
-        <th scope="col"><%= t "deli_address" %></th>
-        <th scope="col"><%= t "deli_phone" %></th>
+        <th scope="col"><%= t "index" %></th>
+        <th scope="col"><%= t "receiver_information" %></th>
         <th scope="col"><%= t "product" %></th>
+        <th scope="col"><%= t "total_price" %></th>
+        <th scope="col"><%= t("create_date") %></th>
         <th scope="col"><%= t "status" %></th>
         <th scope="col"><%= t "option" %></th>
       </tr>

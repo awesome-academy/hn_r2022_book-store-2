@@ -112,3 +112,7 @@ en:
   accept_all_new: "Accept all new order"
   accept_success: "All orders are accepted"
   order_not_found: "There are no pending orders"
+
+  name: "Name"
+  desc: "Description"
+  sold_out: "Sold out"

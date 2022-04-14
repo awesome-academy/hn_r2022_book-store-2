@@ -4,7 +4,7 @@ vi:
   home_admin: "Book Store admin"
   category: "Danh mục"
   product: "Sản phẩm"
-  all_category: "Tất cả danh mục"
+  all_category: "Danh mục"
   all_product: "Tất cả sản phẩm"
   my_order: "Đơn hàng của tôi"
   contact: "Liên hệ"
@@ -93,3 +93,7 @@ vi:
   accept_all_new: "Xác nhận tất cả đơn đặt hàng mới"
   accept_success: "Tất cả các đơn đặt hàng đã được xác nhận"
   order_not_found: "Không có đơn đặt hàng nào đang chờ xử lý"
+
+  name: "Tên"
+  desc: "Mô tả"
+  sold_out: "Đã bán hết"
